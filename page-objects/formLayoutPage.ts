@@ -1,11 +1,10 @@
 import { Page } from '@playwright/test';
+import { HelperBase } from './helperBase';
 
-export class FormLayoutPage{
-
-    readonly page: Page
+export class FormLayoutPage extends HelperBase{
 
     constructor(page: Page){
-        this.page = page
+        super(page)
     }
 
     async submitUsingTheGridFormWithCredentialsAndSelectOption(email: string, password: string, optionText: string){
@@ -15,6 +14,13 @@ export class FormLayoutPage{
         await usingTheGridForm.getByRole('radio', {name: optionText}).check({force: true})
         await usingTheGridForm.getByRole('button').click()
     }
+
+    /**
+     * This method fill out the Inline form with the user details
+     * @param name - should be first and last name
+     * @param email - valid email for the test user
+     * @param rememberMe - true or false if user session to be saved
+     */
 
     async submitUsingTheGridFormWithNameEmailAndCheckbox(name: string, email: string, rememberMe: boolean){
         const inlineForm = this.page.locator('nb-card', {hasText: "Inline form"})
