@@ -175,7 +175,8 @@ test('web tables', async({page})=>{
 test('datepicker', async({page})=>{
   await page.getByText('Forms').click()
   await page.getByText('Datepicker').click()
-  const calenderInputField = await page.getByPlaceholder('Form Picker')
+  
+  const calenderInputField = page.getByPlaceholder('Form Picker')
   await calenderInputField.click()
 
   let date = new Date()
