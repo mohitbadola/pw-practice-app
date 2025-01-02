@@ -1,6 +1,6 @@
 import {Page, expect} from '@playwright/test'
 
-export class datePickerPage{
+export class DatePickerPage{
 
     private readonly page: Page
 

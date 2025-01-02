@@ -19,7 +19,7 @@ export class NavigationPage{
         await this.page.getByText('Datepicker').click()
     }
     
-    async smartTablePAge(){
+    async smartTablePage(){
         await this.selectGroupMenuItem('Tables & Data')
         await this.page.getByText('Smart Table').click()
     }
