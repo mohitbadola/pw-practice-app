@@ -37,6 +37,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     // actionTimeout:5000,
     // navigationTimeout:5000,
+    video: 'on'
   },
 
   /* Configure projects for major browsers */

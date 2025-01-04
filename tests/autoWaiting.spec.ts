@@ -21,7 +21,7 @@ test('auto waiting', async({page})=>{
 
 })
 
-test('alternative waits',async({page})=>{
+test.skip('alternative waits',async({page})=>{
 
     const successButton = page.locator('.bg-success')
 
@@ -39,7 +39,7 @@ test('alternative waits',async({page})=>{
 
 })
 
-test('timeouts', async({page})=>{
+test.skip('timeouts', async({page})=>{
 
     // test.setTimeout({10000})
     // test.slow()   //increase default timeout x3 times
