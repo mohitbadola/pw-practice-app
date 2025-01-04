@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import type { TestOptions } from './test-options';
 
 /**
  * Read environment variables from file.
@@ -7,11 +8,12 @@ import { defineConfig, devices } from '@playwright/test';
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
+require('dotenv').config()
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+export default defineConfig<TestOptions>({
   // timeout:10000,
   // globalTimeout:60000,
   // expect:{
@@ -31,7 +33,8 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'http://localhost:4200/',
+    globalsQaURL: 'https://www.globalsqa.com/demo-site/draganddrop/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -42,6 +45,18 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    {
+      name: 'dev',
+      use: { ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4200/'
+       },
+    },
+    {
+      name: 'staging',
+      use: { ...devices['Desktop Chrome'],
+        baseURL: 'http://localhost:4200/'
+       },
+    },
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
