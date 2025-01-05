@@ -10,11 +10,16 @@ export default defineConfig<TestOptions>({
   // timeout:10000,
   // globalTimeout:60000,
   // expect:{
-  //   timeout: 200
+  //   timeout: 200,
+  // toMatchSnapshot: {maxDiffPixels: 50}
   // },
 
   retries: 1,
-  reporter: 'html',
+  reporter: [
+    ['json', {outputFile: 'test-results/jsonReport.json'}],
+    ['junit', {outputFile: 'test-results/junitReport.xml'}],
+    ['html']
+  ],
  
   use: {
     baseURL: 'http://localhost:4200/',

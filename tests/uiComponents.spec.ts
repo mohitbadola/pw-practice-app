@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe.only("Form Layouts page @block", () => {
-  test.describe.configure({retries: 2})
+  test.describe.configure({retries: 0})
   // test.describe.configure({mode: 'serial'})
   
   test.beforeEach(async ({ page }) => {
@@ -36,12 +36,14 @@ test.describe.only("Form Layouts page @block", () => {
     await expect(usingTheGridEmailInput).toHaveValue("test@test.com");
   });
 
-  test("radio buttons", async({page}) => {
+  test.only("radio buttons", async({page}) => {
     const usingTheGridForm = page.locator("nb-card", {hasText: "Using the Grid"})
 
     // await usingTheGridForm.getByLabel("Option 1").check({ force: true });
     await usingTheGridForm.getByRole('radio', {name: "Option 1"}).check({force: true})
     const radioStatus = await usingTheGridForm.getByRole('radio', {name:"Option 1"}).isChecked()
+    // await expect(usingTheGridForm).toHaveScreenshot({maxDiffPixels: 250})
+
     expect(radioStatus).toBeTruthy()
 
     await expect(usingTheGridForm.getByRole('radio', {name:"Option 1"})).toBeChecked()
