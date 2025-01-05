@@ -55,6 +55,13 @@ export default defineConfig<TestOptions>({
       use:{
         viewport: {width: 1280, height:720}
       }
+    },
+    {
+      name: 'mobile',
+      testMatch: 'testMobile.spec.ts',
+      use: {
+        ...devices['Galaxy S9+']
+      }
     }
   ]
 });
